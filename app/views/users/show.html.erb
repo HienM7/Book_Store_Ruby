@@ -1,0 +1,14 @@
+<h1>Users</h1>
+
+<table class="table">
+  <tr>
+    <th>Email</th>
+    <th>Admin</th>
+  </tr>
+    <tr>
+      <td><%= @user.email %></td>
+      <td><%= @user.admin %></td>
+    </tr>
+</table>
+
+<%= link_to 'All user', users_path, class: 'btn btn-primary' %>
