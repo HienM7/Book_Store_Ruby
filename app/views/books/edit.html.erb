@@ -1,0 +1,9 @@
+<h1>Editing Book</h1>
+
+<div style="width: 64px">
+  <%= image_tag(@book.image, style: 'width: 100%') %>
+</div>
+<%= render 'form', book: @book %>
+
+<%= link_to 'Show', @book %> |
+<%= link_to 'Back', books_path %>
