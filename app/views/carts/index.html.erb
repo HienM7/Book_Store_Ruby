@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Books</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Cover</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td>
+          <div style="width: 64px">
+            <%= image_tag(book.image, style: 'width: 100%') %>
+          </div>
+        </td>
+        <td><%= book.title %></td>
+        <td><%= book.description %></td>
+        <%= form_with(url: '/orders/new', method: 'post') do |form| %>
+        <td><%= form.text_field :amount, value: 1 %></td>
+        <td>
+          <%= form.hidden_field :book_id, value: book.id %>
+        </td>
+        <td>
+          <%= form.submit 'Confirm', class: "btn btn-primary" %>
+        </td>
+        <% end %>
+        <td><%= link_to 'Remove from cart', removefromcart_path(book), class: "btn btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

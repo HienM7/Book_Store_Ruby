@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <%= render 'layouts/navbar', count: cart_count %>
     <div class="container pt-5">
       <p class="notice <%= notice ? 'alert alert-success':'' %>"><%= notice %></p>
       <p class="alert <%= alert ? 'alert-success':'' %>"><%= alert %></p>

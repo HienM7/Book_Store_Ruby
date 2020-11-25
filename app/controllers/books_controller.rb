@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_admin_user!
+  before_action :ensure_admin_user!, except: [:shop]
+  
 
   # GET /books
   # GET /books.json
@@ -10,6 +11,11 @@ class BooksController < ApplicationController
 
   # GET /books/1
   # GET /books/1.json
+
+  def shop
+    @books = Book.all
+  end
+  
   def show
   end
 
@@ -30,11 +36,9 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+    end
     end
   end
 
@@ -44,10 +48,8 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end
   end

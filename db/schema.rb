@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_11_17_034533) do
-=======
-ActiveRecord::Schema.define(version: 2020_11_15_043010) do
->>>>>>> 163e590cd7af697425861131941cfff61188a1b6
+ActiveRecord::Schema.define(version: 2020_11_19_032952) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +39,18 @@ ActiveRecord::Schema.define(version: 2020_11_15_043010) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "price"
+  end
+
+  create_table "books_shopping_carts", id: false, force: :cascade do |t|
+    t.integer "shopping_cart_id", null: false
+    t.integer "book_id", null: false
+  end
+
+  create_table "shopping_carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_shopping_carts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
