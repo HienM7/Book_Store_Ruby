@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'carts/addtocart/:id', to: 'carts#addtocart', as: 'addtocart'
   get 'carts/removefromcart/:id', to: 'carts#removefromcart', as: 'removefromcart'
   get 'carts', to: 'carts#index'
+
+  resources :orders 
   # resources :carts
   root to: 'pages#index'
 end

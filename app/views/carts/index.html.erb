@@ -23,15 +23,13 @@
         </td>
         <td><%= book.title %></td>
         <td><%= book.description %></td>
-        <%= form_with(url: '/orders/new', method: 'post') do |form| %>
-        <td><%= form.text_field :amount, value: 1 %></td>
         <td>
-          <%= form.hidden_field :book_id, value: book.id %>
+          <%= form_with(url: '/orders', method: 'post') do |form| %>
+              <%= form.text_field :amount, value: 1 %>
+              <%= form.hidden_field :book_id, value: book.id %>
+              <%= form.submit 'Confirm', class: "btn btn-primary" %>
+          <% end %>
         </td>
-        <td>
-          <%= form.submit 'Confirm', class: "btn btn-primary" %>
-        </td>
-        <% end %>
         <td><%= link_to 'Remove from cart', removefromcart_path(book), class: "btn btn-primary" %></td>
       </tr>
     <% end %>

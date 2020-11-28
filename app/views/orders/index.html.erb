@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Order</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Cover</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Amount</th>
+      <th>Total</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td>
+          <div style="width: 64px">
+            <%= image_tag(order.book.image, style: 'width: 100%') %>
+          </div>
+        </td>
+        <td><%= order.book.title %></td>
+        <td><%= order.book.description %></td>
+        <td><%= order.book.price %></td>
+        <td><%= order.amount %></td>
+        <td><%= order.book.price * order.amount %></td>
+        <td><%= link_to 'Cancel order', order, method: :delete, data: { confirm: 'Do you want cancel this order?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
